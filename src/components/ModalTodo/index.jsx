@@ -1,12 +1,8 @@
-import { useContext } from "react"
 import { ModalBody, ModalTitle, ModalDialog, ModalHeader,} from "react-bootstrap"
 import { createPortal } from "react-dom"
-import { todoContext } from "../../Context"
-import { TodoForm } from "../TodoForm"
 
-export const ModalTodo = ()=>{
-    const {setIsOpen, isOpen} = useContext(todoContext)
 
+export const ModalTodo = ({setIsOpen, isOpen, children})=>{
     
     const handleDoubleClick = (event)=>{
         if (event.target.id =="bg") {
@@ -30,7 +26,7 @@ export const ModalTodo = ()=>{
 
                         </ModalHeader>
                         <ModalBody>
-                            <TodoForm/>
+                            {children}
                         </ModalBody>
         
                             

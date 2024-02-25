@@ -1,13 +1,13 @@
-import { useContext, useState } from "react"
+
+import { useState } from "react"
 import { ModalFooter } from "react-bootstrap"
 
 import {SaveFill, XCircleFill} from "react-bootstrap-icons"
-import { todoContext } from "../../Context"
 
-const TodoForm = ()=>{
 
-    
-    const {setIsOpen, isOpen, addTodo } = useContext(todoContext)
+// eslint-disable-next-line react/prop-types
+const TodoForm = ({setIsOpen, addTodo})=>{
+
     const [newTodo, setNewTodo] = useState("")
     const [isError, setIsError] = useState(true)
 
@@ -33,7 +33,7 @@ const TodoForm = ()=>{
             </div>
             <ModalFooter>
                 <button className=" btn btn-primary ">Guardar<SaveFill className="ms-2" /></button>
-                <button onClick={()=> setIsOpen(!isOpen)} className="btn btn-danger">Cerrar <XCircleFill/></button>
+                <button onClick={()=> setIsOpen(false)} className="btn btn-danger">Cerrar <XCircleFill/></button>
 
             </ModalFooter>
         

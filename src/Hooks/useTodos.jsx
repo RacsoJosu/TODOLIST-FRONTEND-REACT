@@ -1,9 +1,7 @@
-import { createContext, useState, } from "react"
-import { useLocalStorage } from "../Hooks/UseLocalStorage";
+import { useState, } from "react"
+import { useLocalStorage } from "./UseLocalStorage";
 
-export const todoContext = createContext()
-
-export function TodoProvider({children}){
+export function useTodos(){
     const [todos,saveTodos, isLoading, isError] = useLocalStorage('TODOS_V1', [])
     const [searchValue, setSearchValue] = useState("");
     const [isOpen, setIsOpen] = useState(false)
@@ -47,9 +45,7 @@ export function TodoProvider({children}){
     const totalTodos = todos.length
    
   
-    return (
-        <>
-        <todoContext.Provider value={{
+    return {
             completedTodos,
             totalTodos,
             searchedTodos,
@@ -60,15 +56,10 @@ export function TodoProvider({children}){
             deleteTodos,
             isOpen, 
             setIsOpen,
-            addTodo
+            addTodo,
+            searchValue
 
-        }}>
-            {children}
-
-        </todoContext.Provider>
-        
-        </>
-
-    )
+        }
+    
 }
 

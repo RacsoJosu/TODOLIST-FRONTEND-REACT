@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Card, CardBody, Container } from "react-bootstrap"
 import { CheckCircleFill, XCircleFill } from "react-bootstrap-icons"
-import { todoContext } from "../../../Context"
 
-const TodoCard = ({todo})=>{
-    const context = useContext(todoContext)
+
+// eslint-disable-next-line react/prop-types
+const TodoCard = ({todo, completeTodos, deleteTodos})=>{
+   
     
     const [isFinished, setIsFinished]= useState(false)
 
@@ -16,12 +17,12 @@ const TodoCard = ({todo})=>{
 
 
     const handleFinishedtodo = ()=>{
-        context.completeTodos(todo.title)
+        completeTodos(todo.title)
         setIsFinished(todo.completed);
     }
 
     const handleDeleteTodo = ()=>{
-        context.deleteTodos(todo.title)
+        deleteTodos(todo.title)
 
     }
 

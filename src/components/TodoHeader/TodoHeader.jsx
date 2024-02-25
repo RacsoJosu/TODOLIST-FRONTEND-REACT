@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import { todoContext } from "../../Context"
-
-const TodoHeader = ()=>{
-    const context = useContext(todoContext)
+import {Container} from "react-bootstrap"
+import React from "react"
+const TodoHeader = ({children, loading})=>{
+   
     
     return (
         <>
-            <h1 className="titles justify-content-center align-content-center  align-items-center  ">Has completado {context.completedTodos.length} de {context.totalTodos} Tareas</h1>
-        
+    
+        <Container as={"header"} >{React.Children.toArray(children).map((child)=> React.cloneElement(child, {loading})) }</Container>
+           
         </>
 
         

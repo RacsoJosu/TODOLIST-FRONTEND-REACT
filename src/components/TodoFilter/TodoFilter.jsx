@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import {FormControl} from "react-bootstrap"
-import { todoContext } from "../../Context"
 
-const TodoFilter = ()=>{
-    const context = useContext(todoContext)
+import {FormControl} from "react-bootstrap"
+
+
+const TodoFilter = ({onSearch, loading})=>{
+    
     
     
     
@@ -12,7 +12,7 @@ const TodoFilter = ()=>{
 
     return (
 
-     <FormControl onChange={(event)=> context.setSearchValue(event.target.value)} className="filter form-control form-control-lg my-3 w-50 border-3"
+     <FormControl disabled={loading} onChange={(event)=> onSearch(event.target.value)} id="filter"className=" d-block text-center mx-auto  form-control form-control-lg my-3 w-50 border-3 todoSearch"
      type="text"
      placeholder="Buscar Tarea"
      aria-label=".form-control-lg tarea"
